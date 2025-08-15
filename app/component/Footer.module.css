@@ -1,0 +1,111 @@
+/* พื้นหลังและตัวอักษรของ Footer */
+.footer {
+  background-color: #1f2937; /* เทาเข้ม */
+  color: #ffffff;
+  padding: 2rem 1rem;
+}
+
+/* Container ให้อยู่ตรงกลาง */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ส่วนบนของ footer */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .footer-top {
+    flex-direction: row;
+  }
+}
+
+/* กลุ่มไอคอนโซเชียล */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* สไตล์พื้นฐานของแต่ละไอคอน */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  font-family: sans-serif;
+}
+
+/* Facebook */
+.facebook {
+  background-color: #1877f2;
+}
+.facebook:hover {
+  background-color: #0e63d3;
+}
+
+/* YouTube */
+.youtube {
+  background-color: #ff0000;
+}
+.youtube:hover {
+  background-color: #cc0000;
+}
+
+/* Instagram */
+.instagram {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+}
+.instagram:hover {
+  background: linear-gradient(45deg, #7329a6, #e01313, #e39633);
+}
+
+/* LINE */
+.line {
+  background-color: #00c300;
+}
+.line:hover {
+  background-color: #00a700;
+}
+
+/* ข้อมูลติดต่อ + ลิงก์ */
+.contact-info,
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-info a,
+.footer-links a {
+  color: #d1d5db; /* เทาอ่อน */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover,
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+/* ส่วนล่างสุดของ Footer */
+.footer-bottom {
+  border-top: 1px solid #374151; /* ขีดเส้นบน */
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+}

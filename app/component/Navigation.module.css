@@ -1,0 +1,443 @@
+/* Navigation.module.css */
+
+/* --- Navbar Container --- */
+.navbar {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+}
+
+/* --- Brand --- */
+.brand {
+    color: #FF69B4; /* Changed from #00f0b5 to pink */
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.brand:hover {
+    color: #FF4081; /* Changed from #00e0a5 to a darker pink */
+}
+
+/* --- Nav Links --- */
+.navbarLinks {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbarNav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navItem {
+    margin: 0 5px;
+}
+
+.navLink {
+    color: #f8f8f8;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.navLink::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #FF69B4; /* Changed from #00f0b5 to pink */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.navLink:hover {
+    color: #FF69B4; /* Changed from #00f0b5 to pink */
+    background-color: rgba(255, 105, 180, 0.1); /* Changed from rgba(0, 240, 181, 0.1) to transparent pink */
+}
+
+.navLink:hover::before {
+    transform: translateX(0);
+}
+
+.activeLink {
+    color: #FF69B4 !important; /* Changed from #00f0b5 to pink */
+    background-color: rgba(255, 105, 180, 0.2) !important; /* Changed from rgba(0, 240, 181, 0.2) to transparent pink */
+    font-weight: 700 !important;
+}
+
+.activeLink::before {
+    transform: translateX(0) !important;
+}
+
+/* --- Navbar Actions (Desktop Search, etc.) --- */
+.navbarActions {
+    display: flex;
+    align-items: center;
+    /* Removed margin-left: 20px; to allow it to be closer to nav links if needed, or adjust gap below */
+    gap: 15px; /* เพิ่ม gap ระหว่างปุ่ม search และ login button */
+}
+
+/* --- Desktop Search Bar --- */
+.searchContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.searchInput {
+    width: 0;
+    padding: 8px 15px;
+    border: 2px solid #FF69B4; /* Changed from #00f0b5 to pink */
+    border-radius: 25px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchInput.active {
+    width: 220px;
+    padding: 8px 15px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchInput::placeholder {
+    color: #a0a0a0;
+}
+
+.searchIconBtn {
+    background-color: #FF69B4; /* Changed from #00f0b5 to pink */
+    border: none;
+    border-radius: 50%;
+    color: #1a1a1a;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 10px; /* หรือค่าที่คุณต้องการ เช่น 5px, 8px, 12px */
+}
+
+.searchIconBtn:hover {
+    background-color: #FF4081; /* Changed from #00d095 to a darker pink */
+    transform: scale(1.05);
+}
+
+/* --- Login Button Styles (Desktop) --- */
+.loginButton {
+    /* Style เดิมของคุณ */
+    /* background-color: #FF69B4;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap; */
+
+    /* === สไตล์ที่ปรับปรุงใหม่เพื่อเข้าโทนสี === */
+    background-color: transparent; /* ไม่มีพื้นหลัง */
+    color: #FF69B4; /* สีตัวอักษรเป็นสีชมพู */
+    border: 2px solid #FF69B4; /* มีขอบสีชมพู */
+    padding: 8px 18px; /* ปรับ padding ให้ดูสมดุล */
+    border-radius: 25px; /* ทำให้ปุ่มโค้งมน */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem; /* ปรับขนาดฟอนต์ */
+    transition: all 0.3s ease; /* transition ที่ครอบคลุมมากขึ้น */
+    white-space: nowrap;
+    display: inline-flex; /* เพื่อให้จัด text และ icon ได้ง่ายถ้าจะเพิ่ม */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2); /* เพิ่มเงาอ่อนๆ */
+}
+
+.loginButton:hover {
+    background-color: #FF69B4; /* เมื่อ hover ให้มีพื้นหลังสีชมพู */
+    color: #1a1a1a; /* ตัวอักษรเปลี่ยนเป็นสีเข้ม */
+    transform: translateY(-2px); /* ยกขึ้นเล็กน้อย */
+    box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4); /* เงาเข้มขึ้น */
+}
+
+/* --- Mobile Menu Toggle (Hamburger Icon) --- */
+.menuToggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    margin-left: 20px;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: #FF69B4; /* Changed from #00f0b5 to pink */
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation for Menu Toggle (Hamburger to X) */
+.menuToggle.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+.menuToggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menuToggle.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* --- Mobile Search Form (inside collapsed menu) --- */
+.searchFormMobile {
+    display: none;
+    width: 100%;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchInputMobile {
+    width: calc(100% - 60px);
+    padding: 10px 15px;
+    border: 2px solid #FF69B4; /* Changed from #00f0b5 to pink */
+    border-radius: 25px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.searchButtonMobile {
+    background-color: #FF69B4; /* Changed from #00f0b5 to pink */
+    border: none;
+    border-radius: 50%;
+    color: #1a1a1a; /* สีไอคอนเป็นสีดำเข้ม */
+    width: 40px;
+    height: 40px;
+    display: inline-flex; /* ใช้ inline-flex เพื่อจัดไอคอนให้อยู่ตรงกลาง */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem; /* ขนาดไอคอน */
+}
+
+/* --- Login Button for Mobile Menu (NEW!) --- */
+.mobileLoginButtonContainer {
+    display: none; /* ซ่อนบน Desktop */
+    width: 100%;
+    padding: 10px 20px; /* เพิ่ม padding เพื่อให้มีพื้นที่ */
+    box-sizing: border-box;
+}
+
+.loginButtonMobile {
+    background-color: #FF69B4; /* พื้นหลังสีชมพู */
+    color: #1a1a1a; /* ตัวอักษรสีดำเข้ม */
+    padding: 12px 25px; /* Padding ที่ใหญ่ขึ้น */
+    border-radius: 8px; /* ทำให้มุมมนเล็กน้อย */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block; /* ให้ปุ่มเต็มความกว้าง */
+    width: calc(100% - 40px); /* หัก padding ซ้ายขวาของ parent */
+    margin: 0 auto; /* จัดกึ่งกลาง */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.loginButtonMobile:hover {
+    background-color: #FF4081; /* สีชมพูเข้มขึ้นเมื่อ hover */
+    transform: translateY(-2px);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .container {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .navbarLinks {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #1a1a1a;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 90px;
+        left: 0;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* เพิ่มเงาเมื่อเมนูเปิด */
+    }
+
+    .navbarLinks.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .navbarNav {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navItem {
+        margin: 5px 0; /* ลด margin แนวตั้งเล็กน้อย */
+        width: 100%;
+    }
+
+    .navLink {
+        padding: 12px 20px;
+        width: calc(100% - 40px);
+        margin: 0 auto;
+    }
+
+    .menuToggle {
+        display: flex;
+    }
+
+    .navbarActions {
+        margin-left: 0;
+        /* ซ่อนปุ่ม Login และ Search ของ Desktop บนมือถือ */
+        display: none;
+    }
+
+    /* แสดงเฉพาะปุ่ม Search Icon สำหรับ Mobile ที่อยู่ข้างนอกเมนู */
+    .searchIconBtn {
+        display: flex; /* แสดงปุ่ม search icon บนมือถือ */
+        margin-left: auto; /* จัดไปทางขวา */
+        margin-right: 15px; /* ระยะห่างจาก hamburger icon */
+    }
+     .searchContainer {
+        display: flex; /* แสดง search container เพื่อให้ search icon ทำงานได้ */
+        order: 2; /* ย้าย search icon ให้อยู่ข้างหลัง menu toggle */
+        margin-right: 0; /* ลบ margin เดิม */
+    }
+    .searchInput {
+        width: 0; /* ซ่อน input บน mobile */
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    .searchFormMobile {
+        display: flex; /* แสดง Mobile Search Form เมื่อเมนูเปิด */
+        margin-top: 15px; /* เพิ่มระยะห่างจาก nav items */
+    }
+
+    .mobileLoginButtonContainer {
+        display: block; /* แสดงปุ่ม Login สำหรับ Mobile เมื่อเมนูเปิด */
+        margin-top: 20px; /* เพิ่มระยะห่างจาก search form mobile */
+        margin-bottom: 10px;
+    }
+
+}
+/* ปรับ Responsive สำหรับจอเล็กลงไปอีก */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    .brand {
+        font-size: 1.6rem;
+    }
+    .loginButtonMobile {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .searchInputMobile {
+        width: calc(100% - 50px); /* ปรับความกว้าง input */
+        margin-right: 8px;
+    }
+    .searchButtonMobile {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand {
+        font-size: 1.4rem;
+    }
+    .menuToggle {
+        width: 28px;
+        height: 22px;
+    }
+    .bar {
+        height: 2.5px;
+    }
+    .menuToggle.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .menuToggle.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    .loginButtonMobile {
+        font-size: 0.95rem;
+        padding: 8px 18px;
+    }
+    .searchInputMobile {
+        width: calc(100% - 45px);
+        font-size: 0.9rem;
+    }
+    .searchButtonMobile {
+        width: 35px;
+        height: 35px;
+        font-size: 0.95rem;
+    }
+}
