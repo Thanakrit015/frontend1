@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         <div className={styles['footer-bottom']}>
-          © 2025 Your Company. All rights reserved.
+          © 2025 Nine Thanarkti. All rights reserved.
         </div>
       </div>
     </footer>

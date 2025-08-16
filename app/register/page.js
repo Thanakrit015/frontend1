@@ -42,9 +42,7 @@ export default function RegisterPage() {
     }
 
     try {
-      // Note: bcrypt is not available in Claude artifacts
-      // In a real implementation, you would use bcrypt to hash the password
-      const hashedPassword = formData.password // Placeholder for demonstration
+      const hashedPassword = formData.password // placeholder
 
       const res = await fetch('http://itdev.cmtc.ac.th:3000/api/users', {
         method: 'POST',
@@ -142,7 +140,6 @@ export default function RegisterPage() {
               required
               minLength={6}
             />
-            <span className="tooltip">อย่างน้อย 6 ตัวอักษร</span>
           </div>
 
           <div className="input-group">
@@ -267,278 +264,202 @@ export default function RegisterPage() {
             type="button"
             className="btn-back-home"
             onClick={() => router.push('/')}
-            aria-label="กลับหน้าหลัก"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon-home"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 12l7-7m0 0l7 7m-7-7v18"
-              />
-            </svg>
             กลับหน้าหลัก
           </button>
         </div>
       </div>
 
       <style jsx>{`
-        .register-page {
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background: linear-gradient(135deg, #1a1a1a, #2d1b2e, #1a1a1a);
-          padding: 20px;
-          font-family: 'Poppins', sans-serif;
-          color: #f0f0f0;
-          position: relative;
-          overflow-x: hidden;
-        }
+  .register-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
 
-        .register-page::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.15) 0%, transparent 50%);
-          pointer-events: none;
-          z-index: 1;
-        }
+  /* Animated Gradient Background */
+  .register-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, #1a1a1a, #ff69b4, #2a2a2a, #ff1493);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    z-index: -1;
+  }
 
-        .register-container {
-          background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-          border: 1px solid rgba(255, 105, 180, 0.3);
-          padding: 40px 40px 50px;
-          border-radius: 20px;
-          box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2), 
-                      inset 0 1px 0 rgba(255, 105, 180, 0.1);
-          max-width: 500px;
-          width: 100%;
-          position: relative;
-          backdrop-filter: blur(10px);
-          z-index: 2;
-        }
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-        h2 {
-          text-align: center;
-          margin-bottom: 30px;
-          font-size: 32px;
-          font-weight: 700;
-          color: #ff69b4;
-          text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
-        }
+  .register-container {
+    background: rgba(34, 34, 34, 0.85);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        form {
-          display: flex;
-          flex-direction: column;
-        }
+  .register-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.6);
+  }
 
-        .input-group {
-          position: relative;
-          margin-bottom: 22px;
-        }
+  h2 {
+    text-align: center;
+    color: #ff69b4;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
 
-        label {
-          display: block;
-          margin-bottom: 6px;
-          font-weight: 600;
-          color: #ff69b4;
-          text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
-          cursor: pointer;
-        }
+  .input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
 
-        input[type='text'],
-        input[type='password'],
-        input[type='tel'],
-        input[type='date'],
-        select,
-        textarea {
-          width: 100%;
-          padding: 14px 18px;
-          font-size: 16px;
-          border-radius: 12px;
-          border: 2px solid rgba(255, 105, 180, 0.3);
-          background-color: rgba(0, 0, 0, 0.3);
-          color: #ffffff;
-          font-weight: 500;
-          transition: all 0.3s ease;
-          box-shadow: inset 0 0 8px rgba(255, 105, 180, 0.1);
-          outline: none;
-        }
+  label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #ff9ed9;
+  }
 
-        input[type='text']::placeholder,
-        input[type='password']::placeholder,
-        input[type='tel']::placeholder,
-        textarea::placeholder {
-          color: rgba(255, 255, 255, 0.6);
-        }
+  input[type='text'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='date'],
+  select,
+  textarea {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ff69b4;
+    background: #2a2a2a;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 6px rgba(255, 105, 180, 0.3);
+  }
 
-        input[type='text']:focus,
-        input[type='password']:focus,
-        input[type='tel']:focus,
-        input[type='date']:focus,
-        select:focus,
-        textarea:focus {
-          border-color: #ff69b4;
-          box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
-          background-color: rgba(0, 0, 0, 0.4);
-        }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 12px #ff69b4;
+    transform: scale(1.02);
+  }
 
-        textarea {
-          resize: vertical;
-          min-height: 80px;
-        }
+  .gender-options {
+    display: flex;
+    gap: 30px;
+    margin-top: 4px;
+  }
 
-        .tooltip {
-          position: absolute;
-          right: 12px;
-          top: 38px;
-          font-size: 12px;
-          color: #ff1493;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s ease;
-          text-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
-        }
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ff9ed9;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+  }
 
-        input[type='password']:focus + .tooltip {
-          opacity: 1;
-        }
+  input[type='radio'] {
+    accent-color: #ff69b4;
+    width: 20px;
+    height: 20px;
+  }
 
-        .gender-options {
-          display: flex;
-          gap: 20px;
-        }
+  .radio-label:hover {
+    transform: scale(1.1);
+    color: #ff69b4;
+  }
 
-        .radio-label {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          cursor: pointer;
-          font-weight: 600;
-          color: #ff69b4;
-          text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
-        }
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
 
-        input[type='radio'] {
-          cursor: pointer;
-          width: 20px;
-          height: 20px;
-          accent-color: #ff69b4;
-          transition: transform 0.3s ease;
-        }
-        input[type='radio']:focus {
-          transform: scale(1.2);
-          outline: none;
-          filter: drop-shadow(0 0 8px #ff69b4);
-        }
+  .checkbox-label {
+    color: #ff9ed9;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
 
-        .checkbox-group {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 30px;
-        }
+  input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    accent-color: #ff69b4;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
 
-        .checkbox-label {
-          font-weight: 600;
-          cursor: pointer;
-          user-select: none;
-          color: #ff69b4;
-          text-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
-          transition: color 0.3s ease;
-        }
+  input[type='checkbox']:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 6px #ff69b4;
+  }
 
-        input[type='checkbox'] {
-          cursor: pointer;
-          width: 20px;
-          height: 20px;
-          accent-color: #ff69b4;
-          transform: scale(1.3);
-          transition: filter 0.3s ease;
-        }
-        input[type='checkbox']:focus {
-          filter: drop-shadow(0 0 8px #ff69b4);
-          outline: none;
-        }
+  .btn-submit {
+    background: linear-gradient(135deg, #ff69b4, #c44384);
+    padding: 14px;
+    border-radius: 22px;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #ff69b4;
+  }
 
-        .btn-submit {
-          background: linear-gradient(135deg, #ff69b4, #c44384);
-          border: none;
-          padding: 16px 0;
-          border-radius: 25px;
-          font-size: 20px;
-          font-weight: 700;
-          color: white;
-          cursor: pointer;
-          transition: all 0.4s ease;
-          box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-          letter-spacing: 1px;
-        }
+  .btn-submit:hover {
+    background: linear-gradient(135deg, #ff1493, #ff69b4);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 20px #ff69b4;
+  }
 
-        .btn-submit:hover {
-          background: linear-gradient(135deg, #ff1493, #ff69b4);
-          box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
-          transform: translateY(-2px);
-        }
+  .back-home-container {
+    margin-top: 20px;
+    text-align: center;
+  }
 
-        .back-home-container {
-          margin-top: 20px;
-          text-align: center;
-        }
+  .btn-back-home {
+    background: #2a2a2a;
+    border: 1px solid #ff69b4;
+    color: #ff69b4;
+    padding: 10px 24px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px #ff69b4;
+  }
 
-        .btn-back-home {
-          background: rgba(255, 105, 180, 0.1);
-          border: 2px solid #ff69b4;
-          color: #ff69b4;
-          padding: 12px 30px;
-          border-radius: 25px;
-          font-weight: 600;
-          cursor: pointer;
-          font-size: 16px;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          transition: all 0.3s ease;
-          box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-        }
+  .btn-back-home:hover {
+    background: #ff69b4;
+    color: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 0 18px #ff69b4;
+  }
+`}</style>
 
-        .btn-back-home:hover {
-          background: linear-gradient(45deg, #ff69b4, #c44384);
-          color: white;
-          box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
-          transform: scale(1.05);
-        }
-
-        .icon-home {
-          width: 20px;
-          height: 20px;
-          stroke: currentColor;
-          stroke-width: 2.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 540px) {
-          .register-container {
-            padding: 30px 25px 40px;
-            max-width: 100%;
-          }
-          
-          .gender-options {
-            gap: 15px;
-          }
-        }
-      `}</style>
     </div>
   )
 }
