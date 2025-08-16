@@ -56,7 +56,7 @@ export default function ContactPage() {
       <section className="about">
         <h2>About Me</h2>
         <p>
-          ผมเป็น Web Developer ที่หลงใหลในความเร็วของการขับรถและชื่นชอบหนัง The Fast เป็นแรงบันดาลใจที่นำมาทำ Website นี้ขึ้นมา
+          ผมเป็น Web Developer ที่หลงใหลในความเร็วของการขับรถและชื่นชอบหนังเรื่อง The Fast เป็นแรงบันดาลใจที่นำมาทำ Website นี้ขึ้นมา
         </p>
       </section>
 
